@@ -1,19 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: petclinic
+  name: myapp
+  namespace: myapp
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: petclinic
+      app: myapp
   template:
     metadata:
       labels:
-        app: petclinic
+        app: myapp
     spec:
       containers:
-      - name: petclinic
-        image: dockerhub_username/petclinic:latest
+      - name: myapp
+        image: YOUR_DOCKERHUB_USERNAME/YOUR_APP_NAME:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
